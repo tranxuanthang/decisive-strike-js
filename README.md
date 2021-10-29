@@ -2,5 +2,39 @@
 
 60 frame-per-second Dead By Daylight's Skill Check simulator on the Web.
 
-[demo video](https://user-images.githubusercontent.com/15942946/139405076-cf52946d-3858-4315-89dd-9f0f01f9715a.mp4)
+Live demo: https://tranxuanthang.github.io/decisive-strike
 
+![](https://thumbs.gfycat.com/YoungSelfreliantAmericanquarterhorse-max-1mb.gif)
+
+## Install
+
+NPM:
+
+```shell
+npm install decisive-strike
+```
+
+## Usage
+
+HTML:
+
+```html
+<canvas id="canvas" class="canvas" width="400" height="400"></canvas>
+```
+
+Javscript:
+
+```javascript
+import SkillCheck from 'decisive-strike'
+
+const skillCheck = new SkillCheck(document.getElementById('canvas'), {
+  isContinuously: false,
+  checkTime: 2000,
+  checkpointDifficulty: 0.08,
+  notifyBefore: 800,
+  playNotifyAudio: playNotifyAudio,
+  playGreatAudio: playGreatAudio,
+})
+
+skillCheck.play()
+```
