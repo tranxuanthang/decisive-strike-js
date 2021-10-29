@@ -2,7 +2,10 @@
 
 60 frame-per-second Dead By Daylight's Skill Check simulator on the Web.
 
-Live demo: https://tranxuanthang.github.io/decisive-strike
+Live demo:
+
+- https://tranxuanthang.github.io/decisive-strike
+- https://codepen.io/tranxuanthang/full/oNeebNO (click first to focus!!)
 
 ![](https://thumbs.gfycat.com/YoungSelfreliantAmericanquarterhorse-max-1mb.gif)
 
