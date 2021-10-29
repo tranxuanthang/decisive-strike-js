@@ -14,7 +14,7 @@ NPM:
 npm install decisive-strike
 ```
 
-## Usage
+## Simple usage
 
 HTML:
 
@@ -31,9 +31,7 @@ const skillCheck = new SkillCheck(document.getElementById('canvas'), {
   isContinuously: false,
   checkTime: 2000,
   checkpointDifficulty: 0.08,
-  notifyBefore: 800,
-  playNotifyAudio: playNotifyAudio,
-  playGreatAudio: playGreatAudio,
+  notifyBefore: 800
 })
 
 skillCheck.play()
