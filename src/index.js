@@ -19,6 +19,8 @@ class SkillCheck {
     this.checkTime = options.checkTime || 2000
     this.checkpointDifficulty = options.checkpointDifficulty || 0.08
     this.notifyBefore = options.notifyBefore || 800
+    this.playNotifyAudio = options.playNotifyAudio || null
+    this.playGreatAudio = options.playGreatAudio || null
 
     this.canvas = canvasElement
     this.ctx = canvas.getContext('2d')
@@ -47,19 +49,6 @@ class SkillCheck {
 
     this.keydown = false
     this.notifyPlayed = false
-
-    this.notifyAudio = new Audio('./notify.mp3')
-    this.greatAudio = new Audio('./great.mp3')
-
-    this.notifyAudioCanPlay = false
-    this.greatAudioCanPlay = false
-
-    this.notifyAudio.addEventListener('canplaythrough', () => {
-      this.notifyAudioCanPlay = true
-    })
-    this.greatAudio.addEventListener('canplaythrough', () => {
-      this.greatAudioCanPlay = true
-    })
   }
 
   play() {
@@ -69,13 +58,13 @@ class SkillCheck {
     window.requestAnimationFrame(this.drawContinuously.bind(this))
 
     document.addEventListener('keydown', event => {
-      if(event.key === 'Space') {
+      if(event.code === 'Space') {
         this.keydown = true
       }
     })
 
     document.addEventListener('keyup', event => {
-      if(event.key === 'Space') {
+      if(event.code === 'Space') {
         this.keydown = false
       }
     })
@@ -87,9 +76,10 @@ class SkillCheck {
     }
 
     if (this.validStatus === 1) {
-      this.greatAudio.pause()
-      this.greatAudio.currentTime = 0.0
-      this.greatAudio.play()
+      if (this.playGreatAudio) {
+        this.playGreatAudio()
+      }
+
       this.successStatus = 1
 
       if (this.isContinuously) {
@@ -138,14 +128,6 @@ class SkillCheck {
     }
   }
 
-  isReadyToPlay() {
-    if (this.greatAudioCanPlay && this.notifyAudioCanPlay) {
-      return true
-    }
-
-    return false
-  }
-
   drawContinuously(timestamp) {
     this.currentTimestamp = timestamp
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
@@ -158,19 +140,16 @@ class SkillCheck {
       }
     }
 
-    if (!this.isReadyToPlay()) {
-      this.delayDraw()
-    }
-
     if (this.validStatus === 2) {
       this.delayDraw()
       this.validStatus = 0
     }
 
     if (this.isDelayed && this.notifyPlayed === false && this.delayUntil <= this.currentTimestamp + this.notifyBefore) {
-      this.notifyAudio.pause()
-      this.notifyAudio.currentTime = 0
-      this.notifyAudio.play()
+      if (this.playNotifyAudio) {
+        this.playNotifyAudio()
+      }
+
       this.notifyPlayed = true
     }
 
