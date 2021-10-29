@@ -7,7 +7,7 @@ Live demo:
 - https://tranxuanthang.github.io/decisive-strike
 - https://codepen.io/tranxuanthang/full/oNeebNO (click first to focus!!)
 
-![](https://thumbs.gfycat.com/YoungSelfreliantAmericanquarterhorse-max-1mb.gif)
+![GIF demo](https://thumbs.gfycat.com/YoungSelfreliantAmericanquarterhorse-max-1mb.gif)
 
 ## Install
 
@@ -39,3 +39,8 @@ const skillCheck = new SkillCheck(document.getElementById('canvas'), {
 
 skillCheck.play()
 ```
+
+## TODOs
+
+- More customization option
+- Hooks and callbacks?
